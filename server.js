@@ -7,8 +7,12 @@ mongoose.connect(process.env.DATABASE_URL)
 
 const db = mongoose.connection
 
+const subscribersRouter = require('./routes/subscribers')
+app.use('/subscribers', subscribersRouter)
+
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log("connected to database"))
+app.use(express.json())
 
 PORT = 5000
 
