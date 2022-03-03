@@ -12,10 +12,9 @@ app.use('/subscribers', subscribersRouter)
 
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log("connected to database"))
-app.use(express.json())
 
-PORT = 5000
+PORT = 3000
 
-app.listen(5000, ()=> {
+app.listen(3000, ()=> {
     console.log(`listening on port:${PORT}`)
 })
