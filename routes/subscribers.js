@@ -37,11 +37,27 @@ router.post('/', async(req, res) => {
 })
 
 //update subscriber based on a specific field of interest
-router.patch('', (req,res)=> {
-
+router.patch('/:id', (req,res)=> {
+    if(req.body.name != null){
+         req.body.name
+    }
+    if (req.body.channel != null){
+        req.body.channel
+    }
+    try{
+        const updatedSubscriber = await = res.subscriber.save()
+        res.json(updatedSubscriber)
+    }catch(err){
+        res.status(400).json({message: err.message})
+    }
 })
 //delete subscriber
-router.delete('/:id', (req, res)=> {
-
+router.delete('/:id', async(req, res)=> {
+    try{
+        await res.body.remove()
+        res.json({message: "Delete subscriber"})
+    }catch(err){
+        res.status(500).json({message: err.message})
+    }
 })
 module.exports = router;
